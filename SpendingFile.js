@@ -12,6 +12,8 @@ module.exports = class SpendingFile {
     this.price = this.getPrice();
 
     this.getContent();
+
+    this.price = this.setCommaPrice();
   }
 
   getName() {
@@ -73,6 +75,11 @@ module.exports = class SpendingFile {
     }
     this.hasPrice = false;
     return false;
+  }
+
+  setCommaPrice() {
+    this.commaPrice = this.price.toString(10).replace('.', ',');
+    return this.commaPrice;
   }
 
   getContent() {

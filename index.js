@@ -5,21 +5,27 @@ const SpendingFile = require('./SpendingFile.js');
 
 let csv = settings.propsInCsv.join(', ') + '\n';
 
+function writeCSV(csv) {
+  fs.writeFile(Object.keys({ csv })[0] + '.csv', csv, 'utf8', err => {
+    if (err) {
+      console.log(err);
+    }
+  });
+}
+
 fs.readdir(settings.invoiceDirectoryPath, (err, files) => {
   files.forEach(completeFileName => {
     const spendingFile = new SpendingFile(completeFileName);
     console.log(spendingFile);
 
     settings.propsInCsv.forEach(prop => {
-      csv += spendingFile[prop] + ', ';
+      csv += spendingFile[prop] + '; ';
     });
 
     csv += '\n';
   });
-  fs.writeFile('csv.csv', csv, 'utf8', err => {
-    if (err) {
-      console.log(err);
-    }
-  });
+
+  writeCSV(csv);
+
   console.log('csv.csv ready');
 });
