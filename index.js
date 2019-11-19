@@ -15,6 +15,11 @@ function writeCSV(csv) {
 
 fs.readdir(settings.invoiceDirectoryPath, (err, files) => {
   files.forEach(completeFileName => {
+    const stats = fs.statSync(
+      `${settings.invoiceDirectoryPath}/${completeFileName}`
+    );
+    if (stats.isDirectory()) return;
+
     const spendingFile = new SpendingFile(completeFileName);
     console.log(spendingFile);
 
