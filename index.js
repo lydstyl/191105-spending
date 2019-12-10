@@ -3,7 +3,7 @@ const fs = require('fs');
 const settings = require('./settings.js');
 const SpendingFile = require('./SpendingFile.js');
 
-let csv = settings.propsInCsv.join(', ') + '\n';
+let csv = settings.propsInCsv.join('; ') + '\n';
 
 function writeCSV(csv) {
   fs.writeFile(Object.keys({ csv })[0] + '.csv', csv, 'utf8', err => {
@@ -18,7 +18,11 @@ fs.readdir(settings.invoiceDirectoryPath, (err, files) => {
     const stats = fs.statSync(
       `${settings.invoiceDirectoryPath}/${completeFileName}`
     );
-    if (stats.isDirectory()) return;
+    if (stats.isDirectory()) {
+      console.log('isDirectory', completeFileName);
+
+      return;
+    }
 
     const spendingFile = new SpendingFile(completeFileName);
     console.log(spendingFile);
