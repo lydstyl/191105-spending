@@ -2,17 +2,15 @@
 
 This script transform a folder of invoices to a list of invoices in a .csv
 
-It only works if each invoice files is named as below :
-
-`date-content-amount.extension`
+It only works if each invoice files is named as below : **_date-content-amount.extension_**
 
 where :
 
-- date has this format : `YYMMDD`
-- content is the title. Exemple `invoice xxx from company yyy`
-- amount has this format : `123e45` or `123E45`
-- extension can be any. Exemple `.pdf`
+- date has this format : **_YYMMDD_**
+- content is the title. Exemple : **_invoice xxx from company yyy_**
+- amount has this format : **_123e45_** or **_123E45_**
+- extension can be any. Exemple : **_.pdf_**
 
 Exemple of a complete invoice file name :
 
-`200201-facture 377229 LEROY MERLIN-16E60.jpg`
+**_200201-facture 377229 LEROY MERLIN-16E60.jpg_**
