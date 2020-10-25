@@ -1,8 +1,9 @@
 module.exports = {
-  // invoiceDirectoryPath: '/home/lyd/Dropbox/Actifs/IMMEUBLE RAISMES/Factures'
-  // invoiceDirectoryPath: './invoices',
   invoiceDirectoryPath:
-    '/home/lyd/Dropbox/Passifs/Enfants/2019/dépenses/2019/11',
+    // '/home/lyd/Dropbox/Passifs/Enfants/2019/dépenses/2019/11',
+    // '/home/lyd/Dropbox/Actifs/IMMEUBLE RAISMES/Factures/2018 & 2019',
+    '/home/lyd/Dropbox/Actifs/IMMEUBLE RAISMES/Factures/2020',
+
   propsInCsv: [
     // 'completeName',
     // 'extname',
@@ -13,9 +14,9 @@ module.exports = {
     // 'month',
     // 'day',
     // 'hasPrice',
+    //'price'
     'date',
     'content',
-    //'price'
     'commaPrice',
   ],
 }

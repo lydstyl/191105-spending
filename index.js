@@ -6,23 +6,46 @@ const SpendingFile = require('./SpendingFile.js')
 let csv = settings.propsInCsv.join('; ') + '\n'
 
 function writeCSV(csv) {
-  fs.writeFile(Object.keys({ csv })[0] + '.csv', csv, 'utf8', err => {
+  const d = new Date()
+
+  const months = [
+    'janvier',
+    'février',
+    'mars',
+    'avril',
+    'mai',
+    'juin',
+    'juillet',
+    'aout',
+    'septembre',
+    'octobre',
+    'novembre',
+    'décembre',
+  ]
+
+  const csvName = `Point des factures ${d.getFullYear()} au ${d.getDate()} ${
+    months[d.getMonth()]
+  }.csv`
+
+  fs.writeFile(csvName, csv, 'utf8', err => {
     if (err) {
-      console.log(err)
+      console.log('writeFile err', err)
     }
   })
 }
 
-console.log('settings.invoiceDirectoryPath', settings.invoiceDirectoryPath)
+let total = 0
+
 fs.readdir(settings.invoiceDirectoryPath, (err, files) => {
   if (err) {
-    console.log('err', err)
+    console.log('readdir err', err)
   }
 
   files.forEach(completeFileName => {
     const stats = fs.statSync(
       `${settings.invoiceDirectoryPath}/${completeFileName}`
     )
+
     if (stats.isDirectory()) {
       console.log('isDirectory', completeFileName)
 
@@ -30,7 +53,9 @@ fs.readdir(settings.invoiceDirectoryPath, (err, files) => {
     }
 
     const spendingFile = new SpendingFile(completeFileName)
-    console.log(spendingFile)
+
+    total = +total + +parseFloat(spendingFile.price.replace(',', '.'))
+    total = total.toFixed(2)
 
     settings.propsInCsv.forEach(prop => {
       csv += spendingFile[prop] + '; '
@@ -41,5 +66,7 @@ fs.readdir(settings.invoiceDirectoryPath, (err, files) => {
 
   writeCSV(csv)
 
-  console.log('csv.csv ready')
+  console.log('\ntotal', `${total} €`)
+
+  console.log('\ncsv ready !')
 })
