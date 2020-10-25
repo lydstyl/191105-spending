@@ -1,7 +1,8 @@
 module.exports = {
   // invoiceDirectoryPath: '/home/lyd/Dropbox/Actifs/IMMEUBLE RAISMES/Factures'
   // invoiceDirectoryPath: './invoices',
-  invoiceDirectoryPath: '/home/lyd/Dropbox/Passifs/Enfants/dépenses/2019/11',
+  invoiceDirectoryPath:
+    '/home/lyd/Dropbox/Passifs/Enfants/2019/dépenses/2019/11',
   propsInCsv: [
     // 'completeName',
     // 'extname',
@@ -15,6 +16,6 @@ module.exports = {
     'date',
     'content',
     //'price'
-    'commaPrice'
-  ]
-};
+    'commaPrice',
+  ],
+}
