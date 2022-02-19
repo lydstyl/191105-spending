@@ -6,11 +6,16 @@ It only works if each invoice files is named as below : **_date-content-amount.e
 
 where :
 
-- date has this format : **_YYMMDD_**
-- content is the title. Exemple : **_invoice xxx from company yyy_**
-- amount has this format : **_123e45_** or **_123E45_**
-- extension can be any. Exemple : **_.pdf_**
+-   date has this format : **_YYMMDD_**
+-   content is the title. Exemple : **_invoice xxx from company yyy_**
+-   amount has this format : **_123e45_** or **_123E45_**
+-   extension can be any. Exemple : **_.pdf_**
 
 Exemple of a complete invoice file name :
 
 **_200201-facture 377229 LEROY MERLIN-16E60.jpg_**
+
+# How to use it ?
+
+-   Check settings.js
+-   Launch `npm start`
